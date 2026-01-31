@@ -5,16 +5,28 @@
     <link>https://marginlab.ai/trackers/claude-code/</link>
     <description>Daily and weekly performance tracking for Claude Code (Opus 4.5) on SWE-Bench Pro tasks. Data from MarginLab.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Jan 2026 12:13:48 GMT</lastBuildDate>
-    <docs>Generated on Sat, 31 Jan 2026 12:13:48 GMT</docs>
+    <lastBuildDate>Sat, 31 Jan 2026 18:11:16 GMT</lastBuildDate>
+    <docs>Generated on Sat, 31 Jan 2026 18:11:16 GMT</docs>
     <generator>claude-perf-tracker</generator>
     <item>
-      <title>Feed generated: Sat, 31 Jan 2026 12:13:48 GMT</title>
+      <title>Feed generated: Sat, 31 Jan 2026 18:11:16 GMT</title>
       <link>https://marginlab.ai/trackers/claude-code/</link>
-      <guid isPermaLink="false">claude-code-execution-2026-01-31T12:13:48.236Z</guid>
-      <pubDate>Sat, 31 Jan 2026 12:13:48 GMT</pubDate>
-      <description>This RSS feed was generated on Sat, 31 Jan 2026 12:13:48 GMT.</description>
+      <guid isPermaLink="false">claude-code-execution-2026-01-31T18:11:16.596Z</guid>
+      <pubDate>Sat, 31 Jan 2026 18:11:16 GMT</pubDate>
+      <description>This RSS feed was generated on Sat, 31 Jan 2026 18:11:16 GMT.</description>
       <category>meta</category>
+    </item>
+    <item>
+      <title>Claude Code: 56% pass rate on 2026-01-31 (-2.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-31</guid>
+      <pubDate>Sat, 31 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 56%
+CI: 42.3% - 68.8%
+Evaluations: 50 | Passed: 28
+Baseline: 58%
+Change: -2.0%</description>
+      <category>daily</category>
     </item>
     <item>
       <title>Claude Code: 56% pass rate on 2026-01-30 (-2.0% vs baseline)</title>
@@ -185,45 +197,45 @@ Change: +2.0%</description>
       <category>daily</category>
     </item>
     <item>
-      <title>Claude Code Weekly: 53.6% (Jan 23 - Jan 29)</title>
+      <title>Claude Code Weekly: 54% (Jan 24 - Jan 30)</title>
       <link>https://marginlab.ai/trackers/claude-code/</link>
-      <guid isPermaLink="false">claude-code-weekly-2026-01-24</guid>
-      <pubDate>Fri, 30 Jan 2026 12:00:00 GMT</pubDate>
-      <description>Weekly Pass Rate: 53.6%
-Period: Jan 23 - Jan 29
-CI: 47.4% - 59.7%
-Evaluations: 250</description>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-25</guid>
+      <pubDate>Sat, 31 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Weekly Pass Rate: 54%
+Period: Jan 24 - Jan 30
+CI: 48.3% - 59.6%
+Evaluations: 300</description>
       <category>weekly</category>
     </item>
     <item>
-      <title>Claude Code Weekly: 55.333333333333336% (Jan 16 - Jan 22)</title>
+      <title>Claude Code Weekly: 55.333333333333336% (Jan 17 - Jan 23)</title>
       <link>https://marginlab.ai/trackers/claude-code/</link>
-      <guid isPermaLink="false">claude-code-weekly-2026-01-17</guid>
-      <pubDate>Fri, 23 Jan 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-18</guid>
+      <pubDate>Sat, 24 Jan 2026 12:00:00 GMT</pubDate>
       <description>Weekly Pass Rate: 55.333333333333336%
-Period: Jan 16 - Jan 22
+Period: Jan 17 - Jan 23
 CI: 47.3% - 63.1%
 Evaluations: 150</description>
       <category>weekly</category>
     </item>
     <item>
-      <title>Claude Code Weekly: 52.400000000000006% (Jan 9 - Jan 15)</title>
+      <title>Claude Code Weekly: 52.400000000000006% (Jan 10 - Jan 16)</title>
       <link>https://marginlab.ai/trackers/claude-code/</link>
-      <guid isPermaLink="false">claude-code-weekly-2026-01-10</guid>
-      <pubDate>Fri, 16 Jan 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-11</guid>
+      <pubDate>Sat, 17 Jan 2026 12:00:00 GMT</pubDate>
       <description>Weekly Pass Rate: 52.400000000000006%
-Period: Jan 9 - Jan 15
+Period: Jan 10 - Jan 16
 CI: 46.2% - 58.5%
 Evaluations: 250</description>
       <category>weekly</category>
     </item>
     <item>
-      <title>Claude Code Weekly: 60% (Jan 2 - Jan 8)</title>
+      <title>Claude Code Weekly: 60% (Jan 3 - Jan 9)</title>
       <link>https://marginlab.ai/trackers/claude-code/</link>
-      <guid isPermaLink="false">claude-code-weekly-2026-01-03</guid>
-      <pubDate>Fri, 09 Jan 2026 12:00:00 GMT</pubDate>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-04</guid>
+      <pubDate>Sat, 10 Jan 2026 12:00:00 GMT</pubDate>
       <description>Weekly Pass Rate: 60%
-Period: Jan 2 - Jan 8
+Period: Jan 3 - Jan 9
 CI: 46.8% - 71.9%
 Evaluations: 55</description>
       <category>weekly</category>
