@@ -3,363 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claude Code Performance Tracker - RSS Feed</title>
+  <title>Claude Code Performance Tracker</title>
   <link rel="alternate" type="application/rss+xml" title="Claude Code Performance RSS" href="feed.xml">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace; background: #0d1117; color: #c9d1d9; padding: 2rem; }
-    h1 { color: #fb923c; margin-bottom: 0.5rem; font-size: 1.5rem; }
-    .subtitle { color: #8b949e; margin-bottom: 2rem; font-size: 0.9rem; }
-    .subtitle a { color: #fb923c; text-decoration: none; }
-    .subtitle a:hover { text-decoration: underline; }
-    .status { padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; border: 1px solid #30363d; background: #161b22; }
-    .status.loading { border-color: #fb923c; }
-    .status.success { border-color: #3fb950; }
-    .status.error { border-color: #f85149; }
-    .actions { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    button { background: #fb923c; color: #0d1117; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; }
-    button:hover { background: #f97316; }
-    button:disabled { opacity: 0.5; cursor: not-allowed; }
-    .rss-url { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 0.8rem 1rem; font-family: monospace; font-size: 0.85rem; color: #c9d1d9; word-break: break-all; margin-bottom: 1.5rem; }
-    .feed-items { list-style: none; }
-    .feed-item { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; margin-bottom: 0.75rem; }
-    .feed-item h3 { color: #fb923c; font-size: 0.95rem; margin-bottom: 0.4rem; }
-    .feed-item .date { color: #8b949e; font-size: 0.8rem; margin-bottom: 0.5rem; }
-    .feed-item .desc { color: #c9d1d9; font-size: 0.85rem; line-height: 1.5; }
-    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 2rem; }
-    .metric { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
-    .metric .value { font-size: 1.8rem; font-weight: 700; color: #fb923c; }
-    .metric .label { font-size: 0.75rem; color: #8b949e; margin-top: 0.25rem; }
-    .change-neg { color: #f85149 !important; }
-    .change-pos { color: #3fb950 !important; }
-    .change-neutral { color: #8b949e !important; }
-    pre { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; overflow-x: auto; font-size: 0.8rem; max-height: 400px; overflow-y: auto; display: none; margin-top: 1rem; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace; background: #0d1117; color: #c9d1d9; padding: 0.75rem; font-size: 13px; }
+    a { color: #fb923c; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    .header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .header h1 { color: #fb923c; font-size: 1.1rem; white-space: nowrap; }
+    .header .links { font-size: 0.75rem; color: #8b949e; display: flex; gap: 0.75rem; }
+
+    /* Status bar */
+    .status-bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; font-size: 0.75rem; border: 1px solid #30363d; background: #161b22; }
+    .status-bar.loading { border-color: #fb923c; }
+    .status-bar.success { border-color: #3fb950; }
+    .status-bar.error { border-color: #f85149; }
+    .status-bar .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .status-bar.loading .dot { background: #fb923c; }
+    .status-bar.success .dot { background: #3fb950; }
+    .status-bar.error .dot { background: #f85149; }
+
+    /* Metrics row */
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; margin-bottom: 0.5rem; }
+    .metric { background: #161b22; border: 1px solid #30363d; border-radius: 4px; padding: 0.4rem 0.5rem; text-align: center; }
+    .metric .value { font-size: 1.2rem; font-weight: 700; color: #fb923c; line-height: 1.2; }
+    .metric .label { font-size: 0.65rem; color: #8b949e; }
+
+    /* Two-column layout */
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.5rem; }
+    @media (max-width: 800px) { .columns { grid-template-columns: 1fr; } .metrics { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Panel */
+    .panel { background: #161b22; border: 1px solid #30363d; border-radius: 4px; overflow: hidden; }
+    .panel-head { padding: 0.35rem 0.5rem; font-size: 0.7rem; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #30363d; background: #0d1117; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    th { text-align: left; padding: 0.25rem 0.4rem; color: #8b949e; font-weight: 600; font-size: 0.7rem; border-bottom: 1px solid #30363d; background: #0d1117; position: sticky; top: 0; }
+    td { padding: 0.2rem 0.4rem; border-bottom: 1px solid #21262d; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1c2128; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .change-neg { color: #f85149; }
+    .change-pos { color: #3fb950; }
+    .change-neutral { color: #8b949e; }
+    .rate { font-weight: 600; color: #fb923c; }
+
+    /* Scrollable table body */
+    .table-wrap { max-height: calc(100vh - 220px); overflow-y: auto; }
+    .table-wrap::-webkit-scrollbar { width: 4px; }
+    .table-wrap::-webkit-scrollbar-thumb { background: #30363d; border-radius: 2px; }
+
+    /* Actions */
+    .actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    button { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 0.25rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.72rem; font-family: inherit; }
+    button:hover { background: #30363d; border-color: #8b949e; }
+    button.primary { background: #fb923c; color: #0d1117; border-color: #fb923c; font-weight: 600; }
+    button.primary:hover { background: #f97316; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* XML preview */
+    pre { background: #161b22; border: 1px solid #30363d; border-radius: 4px; padding: 0.5rem; overflow: auto; font-size: 0.72rem; max-height: 300px; display: none; margin-top: 0.5rem; }
     pre.visible { display: block; }
-    footer { margin-top: 3rem; color: #484f58; font-size: 0.75rem; border-top: 1px solid #21262d; padding-top: 1rem; }
+
+    footer { color: #484f58; font-size: 0.65rem; padding-top: 0.4rem; border-top: 1px solid #21262d; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
 
-  <h1>Claude Code Performance Tracker</h1>
-  <p class="subtitle">RSS feed generated from <a href="https://marginlab.ai/trackers/claude-code/" target="_blank">marginlab.ai/trackers/claude-code</a></p>
-  <div class="rss-url">RSS endpoint: <a href="feed.xml" style="color:#fb923c;">feed.xml</a> — subscribe with any RSS reader</div>
+  <div class="header">
+    <h1>Claude Code Perf Tracker</h1>
+    <div class="links">
+      <a href="https://marginlab.ai/trackers/claude-code/" target="_blank">Source</a>
+      <a href="feed.xml">RSS Feed</a>
+    </div>
+  </div>
 
-  <div id="status" class="status loading">Fetching latest data...</div>
+  <div id="status" class="status-bar loading"><span class="dot"></span><span>Fetching data...</span></div>
 
   <div class="metrics" id="metrics" style="display:none;"></div>
 
+  <div class="columns">
+    <div class="panel">
+      <div class="panel-head">Daily Results</div>
+      <div class="table-wrap" id="daily-wrap">
+        <table><thead><tr>
+          <th>Date</th><th class="num">Rate</th><th class="num">CI</th><th class="num">Runs</th><th class="num">Pass</th><th class="num">vs Base</th>
+        </tr></thead><tbody id="daily-body"></tbody></table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">Weekly Aggregates</div>
+      <div class="table-wrap" id="weekly-wrap">
+        <table><thead><tr>
+          <th>Period</th><th class="num">Rate</th><th class="num">CI</th><th class="num">Runs</th>
+        </tr></thead><tbody id="weekly-body"></tbody></table>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
-    <button id="btn-rss" disabled onclick="downloadRSS()">Download RSS (XML)</button>
-    <button id="btn-json" disabled onclick="downloadJSON()">Download JSON</button>
-    <button id="btn-toggle" disabled onclick="toggleXML()">Show Raw XML</button>
+    <button class="primary" id="btn-rss" disabled onclick="downloadRSS()">RSS</button>
+    <button id="btn-json" disabled onclick="downloadJSON()">JSON</button>
+    <button id="btn-toggle" disabled onclick="toggleXML()">XML</button>
     <button id="btn-refresh" onclick="fetchData()">Refresh</button>
   </div>
 
   <pre id="xml-output"></pre>
 
-  <ul class="feed-items" id="feed-items"></ul>
-
-  <footer>
-    Data sourced from MarginLab. This page runs entirely client-side — no server required.
-  </footer>
+  <footer>Data from <a href="https://marginlab.ai" target="_blank">MarginLab</a>. Client-side only.</footer>
 
   <script>
-    const SOURCE_URL = 'https://marginlab.ai/trackers/claude-code/';
-    const CORS_PROXIES = [
-      url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-      url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-    ];
+    let rssXML = '', jsonData = null;
 
-    let rssXML = '';
-    let jsonData = null;
-
-    async function fetchWithProxy(url) {
-      for (const makeProxy of CORS_PROXIES) {
-        try {
-          const proxyUrl = makeProxy(url);
-          const resp = await fetch(proxyUrl);
-          if (resp.ok) return await resp.text();
-        } catch (e) {
-          continue;
-        }
-      }
-      throw new Error('All CORS proxies failed. Try again later.');
-    }
-
-    function extractJSON(html, varPattern) {
-      const regex = new RegExp(varPattern + '\\s*=\\s*(\\[\\s*\\{[\\s\\S]*?\\}\\s*\\]);', 'm');
-      const match = html.match(regex);
-      if (match) {
-        try { return JSON.parse(match[1]); } catch (e) { return null; }
-      }
-      return null;
-    }
-
-    function extractAllData(html) {
-      // Extract daily data array - look for array of objects with passRate and date
-      const dailyPattern = /(\[\s*\{\s*"date"\s*:\s*"20[\s\S]*?\}\s*\])/g;
-      const weeklyPattern = /(\[\s*\{\s*"startDate"\s*:\s*"20[\s\S]*?\}\s*\])/g;
-
-      let daily = null, weekly = null;
-
-      // Find all JSON arrays in script tags
-      const scriptBlocks = html.match(/<script[^>]*>([\s\S]*?)<\/script>/gi) || [];
-      for (const block of scriptBlocks) {
-        const content = block.replace(/<\/?script[^>]*>/gi, '');
-
-        // Daily data: has "date" and "passRate"
-        const dailyMatches = [...content.matchAll(/(\[\s*\{[^[\]]*"date"\s*:[^[\]]*"passRate"\s*:[^[\]]*\}\s*\])/g)];
-        for (const m of dailyMatches) {
-          try {
-            const parsed = JSON.parse(m[1]);
-            if (parsed.length > 0 && parsed[0].date && parsed[0].passRate !== undefined) {
-              if (!daily || parsed.length > daily.length) daily = parsed;
-            }
-          } catch (e) {}
-        }
-
-        // Weekly data: has "startDate" and "passRate"
-        const weeklyMatches = [...content.matchAll(/(\[\s*\{[^[\]]*"startDate"\s*:[^[\]]*"passRate"\s*:[^[\]]*\}\s*\])/g)];
-        for (const m of weeklyMatches) {
-          try {
-            const parsed = JSON.parse(m[1]);
-            if (parsed.length > 0 && parsed[0].startDate) {
-              if (!weekly || parsed.length > weekly.length) weekly = parsed;
-            }
-          } catch (e) {}
-        }
-      }
-
-      // Fallback: scan entire HTML for JSON arrays
-      if (!daily) {
-        const allArrays = [...html.matchAll(/(\[\s*\{\s*"date"\s*:\s*"20\d{2}-\d{2}-\d{2}"[^[\]]*\}\s*(?:,\s*\{[^[\]]*\}\s*)*\])/g)];
-        for (const m of allArrays) {
-          try {
-            const parsed = JSON.parse(m[1]);
-            if (parsed.length > 0 && parsed[0].passRate !== undefined) {
-              if (!daily || parsed.length > daily.length) daily = parsed;
-            }
-          } catch (e) {}
-        }
-      }
-
-      if (!weekly) {
-        const allArrays = [...html.matchAll(/(\[\s*\{\s*"startDate"\s*:\s*"20\d{2}-\d{2}-\d{2}"[^[\]]*\}\s*(?:,\s*\{[^[\]]*\}\s*)*\])/g)];
-        for (const m of allArrays) {
-          try {
-            const parsed = JSON.parse(m[1]);
-            if (parsed.length > 0 && parsed[0].passRate !== undefined) {
-              if (!weekly || parsed.length > weekly.length) weekly = parsed;
-            }
-          } catch (e) {}
-        }
-      }
-
-      // Extract baseline
-      let baseline = null;
-      const baselineMatch = html.match(/baseline[^=]*=\s*([\d.]+)/i) ||
-                            html.match(/baselinePassRate[^=]*=\s*([\d.]+)/i) ||
-                            html.match(/"baseline"\s*:\s*([\d.]+)/i);
-      if (baselineMatch) baseline = parseFloat(baselineMatch[1]);
-
-      return { daily, weekly, baseline };
-    }
-
-    function escapeXML(str) {
-      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    }
-
-    function buildRSS(data) {
-      const { daily, weekly, baseline } = data;
-      const now = new Date().toUTCString();
-      const items = [];
-
-      if (daily && daily.length > 0) {
-        // Sort descending by date
-        const sorted = [...daily].sort((a, b) => b.date.localeCompare(a.date));
-
-        for (const entry of sorted) {
-          const d = new Date(entry.date + 'T12:00:00Z');
-          const change = baseline ? (entry.passRate - baseline).toFixed(1) : null;
-          const changeStr = change !== null ? ` (${change >= 0 ? '+' : ''}${change}% vs baseline)` : '';
-          const title = `Claude Code: ${entry.passRate}% pass rate on ${entry.date}${changeStr}`;
-          const desc = [
-            `Pass Rate: ${entry.passRate}%`,
-            `Confidence Interval: ${entry.ciLower?.toFixed(1)}% - ${entry.ciUpper?.toFixed(1)}%`,
-            `Evaluations: ${entry.runsCount}`,
-            `Passed: ${entry.passed}`,
-            baseline ? `Baseline: ${Math.round(baseline)}%` : '',
-            change !== null ? `Change from baseline: ${change >= 0 ? '+' : ''}${change}%` : '',
-          ].filter(Boolean).join('\n');
-
-          items.push(`    <item>
-      <title>${escapeXML(title)}</title>
-      <link>${escapeXML(SOURCE_URL)}</link>
-      <guid isPermaLink="false">claude-code-daily-${entry.date}</guid>
-      <pubDate>${d.toUTCString()}</pubDate>
-      <description>${escapeXML(desc)}</description>
-      <category>daily</category>
-    </item>`);
-        }
-      }
-
-      if (weekly && weekly.length > 0) {
-        const sorted = [...weekly].sort((a, b) => b.startDate.localeCompare(a.startDate));
-        for (const entry of sorted) {
-          const d = new Date(entry.endDate + 'T12:00:00Z');
-          const title = `Claude Code Weekly: ${entry.passRate}% (${entry.dateRange})`;
-          const desc = [
-            `Weekly Pass Rate: ${entry.passRate}%`,
-            `Period: ${entry.dateRange}`,
-            `Confidence Interval: ${entry.ciLower?.toFixed(1)}% - ${entry.ciUpper?.toFixed(1)}%`,
-            `Total Evaluations: ${entry.runsCount}`,
-          ].filter(Boolean).join('\n');
-
-          items.push(`    <item>
-      <title>${escapeXML(title)}</title>
-      <link>${escapeXML(SOURCE_URL)}</link>
-      <guid isPermaLink="false">claude-code-weekly-${entry.startDate}</guid>
-      <pubDate>${d.toUTCString()}</pubDate>
-      <description>${escapeXML(desc)}</description>
-      <category>weekly</category>
-    </item>`);
-        }
-      }
-
-      return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Claude Code Performance Tracker</title>
-    <link>${escapeXML(SOURCE_URL)}</link>
-    <description>Daily and weekly performance tracking for Claude Code (Opus 4.5) on SWE-Bench Pro tasks, sourced from MarginLab.</description>
-    <language>en-us</language>
-    <lastBuildDate>${now}</lastBuildDate>
-    <generator>claude-perf-tracker RSS generator</generator>
-${items.join('\n')}
-  </channel>
-</rss>`;
+    function r(v) { return Math.round(v * 100) / 100; }
+    function changeHTML(val) {
+      if (val === null) return '<span class="change-neutral">--</span>';
+      const v = parseFloat(val);
+      const cls = v > 0 ? 'change-pos' : v < 0 ? 'change-neg' : 'change-neutral';
+      return `<span class="${cls}">${v >= 0 ? '+' : ''}${val}%</span>`;
     }
 
     function renderMetrics(data) {
       const el = document.getElementById('metrics');
       const { daily, baseline } = data;
-      if (!daily || daily.length === 0) return;
-
+      if (!daily || !daily.length) return;
       const sorted = [...daily].sort((a, b) => b.date.localeCompare(a.date));
       const latest = sorted[0];
-      const last7 = sorted.slice(0, 7);
-      const avg7 = last7.reduce((s, e) => s + e.passRate, 0) / last7.length;
+      const avg7 = sorted.slice(0, 7).reduce((s, e) => s + e.passRate, 0) / Math.min(7, sorted.length);
       const avgAll = sorted.reduce((s, e) => s + e.passRate, 0) / sorted.length;
-
-      const changeClass = (val) => val > 0 ? 'change-pos' : val < 0 ? 'change-neg' : 'change-neutral';
-      const change30 = baseline ? (avgAll - baseline).toFixed(1) : null;
-
+      const bl = baseline ? Math.round(baseline) : null;
+      const ch = bl !== null ? (r(avgAll) - bl).toFixed(1) : null;
+      const chCls = ch !== null ? (ch > 0 ? 'change-pos' : ch < 0 ? 'change-neg' : 'change-neutral') : '';
       el.innerHTML = `
-        <div class="metric"><div class="value">${latest.passRate}%</div><div class="label">Latest (${latest.date})</div></div>
-        <div class="metric"><div class="value">${avg7.toFixed(1)}%</div><div class="label">7-Day Avg</div></div>
-        <div class="metric"><div class="value">${avgAll.toFixed(1)}%</div><div class="label">30-Day Avg</div></div>
-        <div class="metric"><div class="value ${baseline ? changeClass(avgAll - baseline) : ''}">${change30 !== null ? (change30 >= 0 ? '+' : '') + change30 + '%' : 'N/A'}</div><div class="label">vs Baseline (${baseline ? Math.round(baseline) : '?'}%)</div></div>
-      `;
+        <div class="metric"><div class="value">${r(latest.passRate)}%</div><div class="label">Latest ${latest.date}</div></div>
+        <div class="metric"><div class="value">${r(avg7).toFixed(1)}%</div><div class="label">7-day avg</div></div>
+        <div class="metric"><div class="value">${r(avgAll).toFixed(1)}%</div><div class="label">30-day avg</div></div>
+        <div class="metric"><div class="value ${chCls}">${ch !== null ? (ch >= 0 ? '+' : '') + ch + '%' : '--'}</div><div class="label">vs baseline ${bl ?? '?'}%</div></div>`;
       el.style.display = '';
     }
 
-    function renderFeedItems(data) {
-      const el = document.getElementById('feed-items');
-      const { daily, weekly, baseline } = data;
-      if (!daily) { el.innerHTML = '<li class="feed-item"><h3>No data found</h3></li>'; return; }
-
+    function renderDaily(data) {
+      const { daily, baseline } = data;
+      const el = document.getElementById('daily-body');
+      if (!daily) { el.innerHTML = '<tr><td colspan="6">No data</td></tr>'; return; }
+      const bl = baseline ? Math.round(baseline) : null;
       const sorted = [...daily].sort((a, b) => b.date.localeCompare(a.date));
-      let html = '';
-      for (const entry of sorted) {
-        const change = baseline ? (entry.passRate - baseline).toFixed(1) : null;
-        const changeStr = change !== null ? ` <span class="${change >= 0 ? 'change-pos' : 'change-neg'}">(${change >= 0 ? '+' : ''}${change}%)</span>` : '';
-        html += `<li class="feed-item">
-          <h3>${entry.passRate}% pass rate${changeStr}</h3>
-          <div class="date">${entry.date} &middot; ${entry.runsCount} evaluations &middot; ${entry.passed} passed</div>
-          <div class="desc">CI: ${entry.ciLower?.toFixed(1)}% – ${entry.ciUpper?.toFixed(1)}%</div>
-        </li>`;
-      }
+      el.innerHTML = sorted.map(e => {
+        const ch = bl !== null ? (r(e.passRate) - bl).toFixed(1) : null;
+        return `<tr>
+          <td>${e.date.slice(5)}</td>
+          <td class="num rate">${r(e.passRate)}%</td>
+          <td class="num">${e.ciLower?.toFixed(1)}–${e.ciUpper?.toFixed(1)}</td>
+          <td class="num">${e.runsCount}</td>
+          <td class="num">${e.passed}</td>
+          <td class="num">${changeHTML(ch)}</td>
+        </tr>`;
+      }).join('');
+    }
 
-      if (weekly && weekly.length > 0) {
-        html += '<li class="feed-item" style="border-color:#fb923c;"><h3 style="color:#8b949e;">Weekly Summaries</h3></li>';
-        const wsorted = [...weekly].sort((a, b) => b.startDate.localeCompare(a.startDate));
-        for (const entry of wsorted) {
-          html += `<li class="feed-item">
-            <h3>${entry.passRate}% weekly avg</h3>
-            <div class="date">${entry.dateRange} &middot; ${entry.runsCount} evaluations</div>
-            <div class="desc">CI: ${entry.ciLower?.toFixed(1)}% – ${entry.ciUpper?.toFixed(1)}%</div>
-          </li>`;
-        }
-      }
-
-      el.innerHTML = html;
+    function renderWeekly(data) {
+      const { weekly } = data;
+      const el = document.getElementById('weekly-body');
+      if (!weekly || !weekly.length) { el.innerHTML = '<tr><td colspan="4">No data</td></tr>'; return; }
+      const sorted = [...weekly].sort((a, b) => b.startDate.localeCompare(a.startDate));
+      el.innerHTML = sorted.map(e => `<tr>
+        <td>${e.dateRange}</td>
+        <td class="num rate">${r(e.passRate)}%</td>
+        <td class="num">${e.ciLower?.toFixed(1)}–${e.ciUpper?.toFixed(1)}</td>
+        <td class="num">${e.runsCount}</td>
+      </tr>`).join('');
     }
 
     async function fetchData() {
-      const statusEl = document.getElementById('status');
-      statusEl.className = 'status loading';
-      statusEl.textContent = 'Fetching latest data from MarginLab...';
-
-      document.getElementById('btn-rss').disabled = true;
-      document.getElementById('btn-json').disabled = true;
-      document.getElementById('btn-toggle').disabled = true;
-
+      const s = document.getElementById('status');
+      s.className = 'status-bar loading'; s.innerHTML = '<span class="dot"></span><span>Loading...</span>';
+      ['btn-rss','btn-json','btn-toggle'].forEach(id => document.getElementById(id).disabled = true);
       try {
-        const html = await fetchWithProxy(SOURCE_URL);
-        const data = extractAllData(html);
-
-        if (!data.daily || data.daily.length === 0) {
-          throw new Error('Could not extract performance data from page. The page structure may have changed.');
-        }
-
+        const [dataResp, rssResp] = await Promise.all([
+          fetch('data.json'),
+          fetch('feed.xml')
+        ]);
+        if (!dataResp.ok) throw new Error('data.json not found. Run the GitHub Action first.');
+        const data = await dataResp.json();
+        rssXML = rssResp.ok ? await rssResp.text() : '';
+        if (!data.daily || !data.daily.length) throw new Error('No daily data in data.json.');
         jsonData = data;
-        rssXML = buildRSS(data);
-
         renderMetrics(data);
-        renderFeedItems(data);
-
-        document.getElementById('xml-output').textContent = rssXML;
-        document.getElementById('btn-rss').disabled = false;
-        document.getElementById('btn-json').disabled = false;
-        document.getElementById('btn-toggle').disabled = false;
-
-        statusEl.className = 'status success';
-        statusEl.textContent = `Loaded ${data.daily.length} daily entries and ${data.weekly?.length || 0} weekly entries. Last updated: ${new Date().toLocaleString()}`;
+        renderDaily(data);
+        renderWeekly(data);
+        if (rssXML) document.getElementById('xml-output').textContent = rssXML;
+        ['btn-rss','btn-json','btn-toggle'].forEach(id => document.getElementById(id).disabled = false);
+        s.className = 'status-bar success';
+        s.innerHTML = `<span class="dot"></span><span>${data.daily.length} daily + ${data.weekly?.length||0} weekly &middot; updated by GitHub Action</span>`;
       } catch (err) {
-        statusEl.className = 'status error';
-        statusEl.textContent = `Error: ${err.message}`;
+        s.className = 'status-bar error';
+        s.innerHTML = `<span class="dot"></span><span>${err.message}</span>`;
       }
     }
 
-    function downloadRSS() {
-      if (!rssXML) return;
-      const blob = new Blob([rssXML], { type: 'application/rss+xml' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'claude-code-performance.rss';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
+    function downloadRSS() { if (!rssXML) return; const b = new Blob([rssXML],{type:'application/rss+xml'}); const u = URL.createObjectURL(b); Object.assign(document.createElement('a'),{href:u,download:'claude-code.rss'}).click(); URL.revokeObjectURL(u); }
+    function downloadJSON() { if (!jsonData) return; const b = new Blob([JSON.stringify(jsonData,null,2)],{type:'application/json'}); const u = URL.createObjectURL(b); Object.assign(document.createElement('a'),{href:u,download:'claude-code.json'}).click(); URL.revokeObjectURL(u); }
+    function toggleXML() { const p = document.getElementById('xml-output'); p.classList.toggle('visible'); document.getElementById('btn-toggle').textContent = p.classList.contains('visible') ? 'Hide XML' : 'XML'; }
 
-    function downloadJSON() {
-      if (!jsonData) return;
-      const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'claude-code-performance.json';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function toggleXML() {
-      const pre = document.getElementById('xml-output');
-      pre.classList.toggle('visible');
-      document.getElementById('btn-toggle').textContent = pre.classList.contains('visible') ? 'Hide Raw XML' : 'Show Raw XML';
-    }
-
-    // Auto-fetch on load
     fetchData();
   </script>
 </body>
