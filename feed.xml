@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Claude Code Performance Tracker</title>
+    <link>https://marginlab.ai/trackers/claude-code/</link>
+    <description>Daily and weekly performance tracking for Claude Code (Opus 4.5) on SWE-Bench Pro tasks. Data from MarginLab.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 31 Jan 2026 07:02:22 GMT</lastBuildDate>
+    <docs>Generated on Sat, 31 Jan 2026 07:02:22 GMT</docs>
+    <generator>claude-perf-tracker</generator>
+    <item>
+      <title>Feed generated: Sat, 31 Jan 2026 07:02:22 GMT</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-execution-2026-01-31T07:02:22.394Z</guid>
+      <pubDate>Sat, 31 Jan 2026 07:02:22 GMT</pubDate>
+      <description>This RSS feed was generated on Sat, 31 Jan 2026 07:02:22 GMT.</description>
+      <category>meta</category>
+    </item>
+    <item>
+      <title>Claude Code: 56% pass rate on 2026-01-30 (-2.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-30</guid>
+      <pubDate>Fri, 30 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 56%
+CI: 42.3% - 68.8%
+Evaluations: 50 | Passed: 28
+Baseline: 58%
+Change: -2.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 50% pass rate on 2026-01-29 (-8.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-29</guid>
+      <pubDate>Thu, 29 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 50%
+CI: 36.6% - 63.4%
+Evaluations: 50 | Passed: 25
+Baseline: 58%
+Change: -8.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 52% pass rate on 2026-01-28 (-6.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-28</guid>
+      <pubDate>Wed, 28 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 52%
+CI: 38.5% - 65.2%
+Evaluations: 50 | Passed: 26
+Baseline: 58%
+Change: -6.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 56% pass rate on 2026-01-27 (-2.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-27</guid>
+      <pubDate>Tue, 27 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 56%
+CI: 42.3% - 68.8%
+Evaluations: 50 | Passed: 28
+Baseline: 58%
+Change: -2.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 54% pass rate on 2026-01-26 (-4.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-26</guid>
+      <pubDate>Mon, 26 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 54%
+CI: 40.4% - 67.0%
+Evaluations: 50 | Passed: 27
+Baseline: 58%
+Change: -4.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 54% pass rate on 2026-01-23 (-4.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-23</guid>
+      <pubDate>Fri, 23 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 54%
+CI: 40.4% - 67.0%
+Evaluations: 50 | Passed: 27
+Baseline: 58%
+Change: -4.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 56% pass rate on 2026-01-20 (-2.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-20</guid>
+      <pubDate>Tue, 20 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 56%
+CI: 42.3% - 68.8%
+Evaluations: 50 | Passed: 28
+Baseline: 58%
+Change: -2.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 56% pass rate on 2026-01-19 (-2.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-19</guid>
+      <pubDate>Mon, 19 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 56%
+CI: 42.3% - 68.8%
+Evaluations: 50 | Passed: 28
+Baseline: 58%
+Change: -2.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 54% pass rate on 2026-01-16 (-4.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-16</guid>
+      <pubDate>Fri, 16 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 54%
+CI: 40.4% - 67.0%
+Evaluations: 50 | Passed: 27
+Baseline: 58%
+Change: -4.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 50% pass rate on 2026-01-15 (-8.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-15</guid>
+      <pubDate>Thu, 15 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 50%
+CI: 36.6% - 63.4%
+Evaluations: 50 | Passed: 25
+Baseline: 58%
+Change: -8.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 52% pass rate on 2026-01-14 (-6.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-14</guid>
+      <pubDate>Wed, 14 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 52%
+CI: 38.5% - 65.2%
+Evaluations: 50 | Passed: 26
+Baseline: 58%
+Change: -6.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 54% pass rate on 2026-01-13 (-4.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-13</guid>
+      <pubDate>Tue, 13 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 54%
+CI: 40.4% - 67.0%
+Evaluations: 50 | Passed: 27
+Baseline: 58%
+Change: -4.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 52% pass rate on 2026-01-12 (-6.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-12</guid>
+      <pubDate>Mon, 12 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 52%
+CI: 38.5% - 65.2%
+Evaluations: 50 | Passed: 26
+Baseline: 58%
+Change: -6.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code: 60% pass rate on 2026-01-08 (+2.0% vs baseline)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-daily-2026-01-08</guid>
+      <pubDate>Thu, 08 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Pass Rate: 60%
+CI: 46.8% - 71.9%
+Evaluations: 55 | Passed: 33
+Baseline: 58%
+Change: +2.0%</description>
+      <category>daily</category>
+    </item>
+    <item>
+      <title>Claude Code Weekly: 53.6% (Jan 23 - Jan 29)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-24</guid>
+      <pubDate>Fri, 30 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Weekly Pass Rate: 53.6%
+Period: Jan 23 - Jan 29
+CI: 47.4% - 59.7%
+Evaluations: 250</description>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>Claude Code Weekly: 55.333333333333336% (Jan 16 - Jan 22)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-17</guid>
+      <pubDate>Fri, 23 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Weekly Pass Rate: 55.333333333333336%
+Period: Jan 16 - Jan 22
+CI: 47.3% - 63.1%
+Evaluations: 150</description>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>Claude Code Weekly: 52.400000000000006% (Jan 9 - Jan 15)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-10</guid>
+      <pubDate>Fri, 16 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Weekly Pass Rate: 52.400000000000006%
+Period: Jan 9 - Jan 15
+CI: 46.2% - 58.5%
+Evaluations: 250</description>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>Claude Code Weekly: 60% (Jan 2 - Jan 8)</title>
+      <link>https://marginlab.ai/trackers/claude-code/</link>
+      <guid isPermaLink="false">claude-code-weekly-2026-01-03</guid>
+      <pubDate>Fri, 09 Jan 2026 12:00:00 GMT</pubDate>
+      <description>Weekly Pass Rate: 60%
+Period: Jan 2 - Jan 8
+CI: 46.8% - 71.9%
+Evaluations: 55</description>
+      <category>weekly</category>
+    </item>
+  </channel>
+</rss>

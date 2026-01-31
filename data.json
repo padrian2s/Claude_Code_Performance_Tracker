@@ -1,0 +1,155 @@
+{
+  "daily": [
+    {
+      "date": "2026-01-08",
+      "passRate": 60,
+      "ciLower": 46.81256091064502,
+      "ciUpper": 71.88169621356643,
+      "runsCount": 55,
+      "passed": 33
+    },
+    {
+      "date": "2026-01-12",
+      "passRate": 52,
+      "ciLower": 38.511512258808445,
+      "ciUpper": 65.20308760449429,
+      "runsCount": 50,
+      "passed": 26
+    },
+    {
+      "date": "2026-01-13",
+      "passRate": 54,
+      "ciLower": 40.398634328388084,
+      "ciUpper": 67.03056539821736,
+      "runsCount": 50,
+      "passed": 27
+    },
+    {
+      "date": "2026-01-14",
+      "passRate": 52,
+      "ciLower": 38.511512258808445,
+      "ciUpper": 65.20308760449429,
+      "runsCount": 50,
+      "passed": 26
+    },
+    {
+      "date": "2026-01-15",
+      "passRate": 50,
+      "ciLower": 36.64428641233285,
+      "ciUpper": 63.35571358766714,
+      "runsCount": 50,
+      "passed": 25
+    },
+    {
+      "date": "2026-01-16",
+      "passRate": 54,
+      "ciLower": 40.398634328388084,
+      "ciUpper": 67.03056539821736,
+      "runsCount": 50,
+      "passed": 27
+    },
+    {
+      "date": "2026-01-19",
+      "passRate": 56.00000000000001,
+      "ciLower": 42.30578680014353,
+      "ciUpper": 68.83801278976466,
+      "runsCount": 50,
+      "passed": 28
+    },
+    {
+      "date": "2026-01-20",
+      "passRate": 56.00000000000001,
+      "ciLower": 42.30578680014353,
+      "ciUpper": 68.83801278976466,
+      "runsCount": 50,
+      "passed": 28
+    },
+    {
+      "date": "2026-01-23",
+      "passRate": 54,
+      "ciLower": 40.398634328388084,
+      "ciUpper": 67.03056539821736,
+      "runsCount": 50,
+      "passed": 27
+    },
+    {
+      "date": "2026-01-26",
+      "passRate": 54,
+      "ciLower": 40.398634328388084,
+      "ciUpper": 67.03056539821736,
+      "runsCount": 50,
+      "passed": 27
+    },
+    {
+      "date": "2026-01-27",
+      "passRate": 56.00000000000001,
+      "ciLower": 42.30578680014353,
+      "ciUpper": 68.83801278976466,
+      "runsCount": 50,
+      "passed": 28
+    },
+    {
+      "date": "2026-01-28",
+      "passRate": 52,
+      "ciLower": 38.511512258808445,
+      "ciUpper": 65.20308760449429,
+      "runsCount": 50,
+      "passed": 26
+    },
+    {
+      "date": "2026-01-29",
+      "passRate": 50,
+      "ciLower": 36.64428641233285,
+      "ciUpper": 63.35571358766714,
+      "runsCount": 50,
+      "passed": 25
+    },
+    {
+      "date": "2026-01-30",
+      "passRate": 56.00000000000001,
+      "ciLower": 42.30578680014353,
+      "ciUpper": 68.83801278976466,
+      "runsCount": 50,
+      "passed": 28
+    }
+  ],
+  "weekly": [
+    {
+      "startDate": "2026-01-03",
+      "endDate": "2026-01-09",
+      "dateRange": "Jan 2 - Jan 8",
+      "passRate": 60,
+      "ciLower": 46.81256091064502,
+      "ciUpper": 71.88169621356643,
+      "runsCount": 55
+    },
+    {
+      "startDate": "2026-01-10",
+      "endDate": "2026-01-16",
+      "dateRange": "Jan 9 - Jan 15",
+      "passRate": 52.400000000000006,
+      "ciLower": 46.219676292977034,
+      "ciUpper": 58.507681240224784,
+      "runsCount": 250
+    },
+    {
+      "startDate": "2026-01-17",
+      "endDate": "2026-01-23",
+      "dateRange": "Jan 16 - Jan 22",
+      "passRate": 55.333333333333336,
+      "ciLower": 47.34297284995479,
+      "ciUpper": 63.057334999157554,
+      "runsCount": 150
+    },
+    {
+      "startDate": "2026-01-24",
+      "endDate": "2026-01-30",
+      "dateRange": "Jan 23 - Jan 29",
+      "passRate": 53.6,
+      "ciLower": 47.410255177893276,
+      "ciUpper": 59.680781121909455,
+      "runsCount": 250
+    }
+  ],
+  "baseline": 57.99999999999999
+}
