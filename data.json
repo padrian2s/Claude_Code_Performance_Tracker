@@ -119,44 +119,52 @@
       "ciUpper": 68.83801278976466,
       "runsCount": 50,
       "passed": 28
+    },
+    {
+      "date": "2026-02-02",
+      "passRate": 46.94,
+      "ciLower": 33.703281897894776,
+      "ciUpper": 60.61937298008014,
+      "runsCount": 49,
+      "passed": 23
     }
   ],
   "weekly": [
     {
-      "startDate": "2026-01-04",
-      "endDate": "2026-01-10",
-      "dateRange": "Jan 3 - Jan 9",
-      "passRate": 60,
-      "ciLower": 46.81256091064502,
-      "ciUpper": 71.88169621356643,
-      "runsCount": 55
+      "startDate": "2026-01-06",
+      "endDate": "2026-01-12",
+      "dateRange": "Jan 5 - Jan 11",
+      "passRate": 56.19047619047619,
+      "ciLower": 46.64816913835178,
+      "ciUpper": 65.29579346418252,
+      "runsCount": 105
     },
     {
-      "startDate": "2026-01-11",
-      "endDate": "2026-01-17",
-      "dateRange": "Jan 10 - Jan 16",
-      "passRate": 52.400000000000006,
-      "ciLower": 46.219676292977034,
-      "ciUpper": 58.507681240224784,
+      "startDate": "2026-01-13",
+      "endDate": "2026-01-19",
+      "dateRange": "Jan 12 - Jan 18",
+      "passRate": 53.2,
+      "ciLower": 47.013005664920065,
+      "ciUpper": 59.290137712682345,
       "runsCount": 250
     },
     {
-      "startDate": "2026-01-18",
-      "endDate": "2026-01-24",
-      "dateRange": "Jan 17 - Jan 23",
-      "passRate": 55.333333333333336,
-      "ciLower": 47.34297284995479,
-      "ciUpper": 63.057334999157554,
+      "startDate": "2026-01-20",
+      "endDate": "2026-01-26",
+      "dateRange": "Jan 19 - Jan 25",
+      "passRate": 54.666666666666664,
+      "ciLower": 46.682631163294026,
+      "ciUpper": 62.41763820467925,
       "runsCount": 150
     },
     {
-      "startDate": "2026-01-25",
-      "endDate": "2026-01-31",
-      "dateRange": "Jan 24 - Jan 30",
-      "passRate": 54,
-      "ciLower": 48.345067457134746,
-      "ciUpper": 59.553785102883374,
-      "runsCount": 300
+      "startDate": "2026-01-27",
+      "endDate": "2026-02-02",
+      "dateRange": "Jan 26 - Feb 1",
+      "passRate": 52.84280936454849,
+      "ciLower": 47.18431661610359,
+      "ciUpper": 58.42917901989886,
+      "runsCount": 299
     }
   ],
   "baseline": 57.99999999999999
