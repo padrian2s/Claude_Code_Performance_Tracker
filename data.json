@@ -6,6 +6,7 @@
       "ciLower": 43.27024751701555,
       "ciUpper": 69.97689110104294,
       "runsCount": 49,
+      "displayRunsCount": 50,
       "passed": 28
     },
     {
@@ -14,18 +15,29 @@
       "ciLower": 39.232141926770794,
       "ciUpper": 66.66853783153735,
       "runsCount": 47,
+      "displayRunsCount": 50,
       "passed": 25
+    },
+    {
+      "date": "2026-02-09",
+      "passRate": 52,
+      "ciLower": 38.511512258808445,
+      "ciUpper": 65.20308760449429,
+      "runsCount": 50,
+      "displayRunsCount": 50,
+      "passed": 26
     }
   ],
   "weekly": [
     {
-      "startDate": "2026-02-01",
-      "endDate": "2026-02-07",
-      "dateRange": "Jan 31 - Feb 6",
-      "passRate": 55.208333333333336,
-      "ciLower": 45.25145906400809,
-      "ciUpper": 64.76440606635843,
-      "runsCount": 96
+      "startDate": "2026-02-03",
+      "endDate": "2026-02-09",
+      "dateRange": "Feb 2 - Feb 8",
+      "passRate": 54.109589041095894,
+      "ciLower": 46.02472581887194,
+      "ciUpper": 61.9837311116467,
+      "runsCount": 146,
+      "displayRunsCount": 150
     }
   ],
   "baseline": null
