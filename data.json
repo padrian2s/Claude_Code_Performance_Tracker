@@ -26,18 +26,27 @@
       "runsCount": 50,
       "displayRunsCount": 50,
       "passed": 26
+    },
+    {
+      "date": "2026-02-10",
+      "passRate": 58.330000000000005,
+      "ciLower": 44.281082215364655,
+      "ciUpper": 71.15054026542299,
+      "runsCount": 48,
+      "displayRunsCount": 50,
+      "passed": 28
     }
   ],
   "weekly": [
     {
-      "startDate": "2026-02-03",
-      "endDate": "2026-02-09",
-      "dateRange": "Feb 2 - Feb 8",
-      "passRate": 54.109589041095894,
-      "ciLower": 46.02472581887194,
-      "ciUpper": 61.9837311116467,
-      "runsCount": 146,
-      "displayRunsCount": 150
+      "startDate": "2026-02-04",
+      "endDate": "2026-02-10",
+      "dateRange": "Feb 3 - Feb 9",
+      "passRate": 55.154639175257735,
+      "ciLower": 48.12360550835145,
+      "ciUpper": 61.98549187056178,
+      "runsCount": 194,
+      "displayRunsCount": 200
     }
   ],
   "baseline": null
